@@ -1,40 +1,40 @@
 ArgoCd 
  If you want to install argocd first install Kubernetes kubectl and Minikube.
  Steps to install Kubernetes kubectl and Minikube.(https://medium.com/@subhampradhan966/setup-kubernetes-kubectl-and-minikube-on-ubuntu-22-04-lts-ca9e39c35d8a)
-      1. launch the ubuntu server and login to the server.
-      2. run the below commands one by one 
-1.	sudo apt update
-2.	sudo apt install docker.io
-3.	sudo systemctl start docker
-4.	sudo systemctl enable docker
-5.	sudo apt install -y apt-transport-https ca-certificates curl
-6.	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-7.	echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  1. launch the ubuntu server and login to the server.
+  2. run the below commands one by one 
+            1.	sudo apt update
+            2.	sudo apt install docker.io
+            3.	sudo systemctl start docker
+            4.	sudo systemctl enable docker
+            5.	sudo apt install -y apt-transport-https ca-certificates curl
+            6.	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+            7.	echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-    3. To verify the installation, run:
+  3. To verify the installation, run:
                    1. sudo snap install kubectl –classic
                    2. kubectl version –client
 
-    4.Install Minikube:
-1.	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-2.	minikube version
+  4.Install Minikube:
+            1.	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 sudo install minikube-linux-amd64 /usr/local/bin/minikube
+            2.	minikube version
 
-   5.start the minikube using the docker driver:
-1. minikube start --driver=docker
-2. # If you encounter root privileges error, run:
-     minikube start --driver=docker --force
-3. minikube status
+  5.start the minikube using the docker driver:
+            1. minikube start --driver=docker
+            2. # If you encounter root privileges error, run:
+               minikube start --driver=docker --force
+            3. minikube status
   6. now install the argoCd  by using the given commands
                1. kubectl create namespace argocd
-   2. kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo- cd/stable/manifests/install.yam
+               2. kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo- cd/stable/manifests/install.yam
   7.Check weather the argocd services and pods are created successfully or not
-Commands are:
-Kubectl get pods -n argocd
-Kubectl get svc -n argocd
-Once all services and pods are ready
-Change the type in argocd-server service from CLUSTERIP to NODEPORT
-Ex: type: Nodeport
-             Command: kubectl edit svc/argocd-server -n argocd
+            Commands are:
+            Kubectl get pods -n argocd
+            Kubectl get svc -n argocd
+            Once all services and pods are ready
+            Change the type in argocd-server service from CLUSTERIP to NODEPORT
+            Ex: type: Nodeport
+            Command: kubectl edit svc/argocd-server -n argocd
 
   8.Now get the argocd UI url by running “minikube service argocd-server -n argocd” the command
 
@@ -49,8 +49,8 @@ Ex: type: Nodeport
            Command to view that password id : kubectl edit secret argocd-initial-admin-secret -n argocd
            Copy the password and decode (default password is encoded one we should decode that) by using the
            command: echo VTF0TmRUT3IyeEY4cHgwVw== | base64 --decode        
-11. Copy the password and come to argocd UI and paste it login to the UI
+  11. Copy the password and come to argocd UI and paste it login to the UI
 
-12. now create one deployment by giving Git URL and path(folder name where manifest files are placed)   
-13. Automatically argocd run those manifest files and run the pods with the given image in the manifest file.
-14. Take the ip address where the pods are running along with port paste it in browse you can get your output there.                                                                                                             
+  12. now create one deployment by giving Git URL and path(folder name where manifest files are placed)   
+  13. Automatically argocd run those manifest files and run the pods with the given image in the manifest file.
+  14. Take the ip address where the pods are running along with port paste it in browse you can get your output there.                                                                                                             
