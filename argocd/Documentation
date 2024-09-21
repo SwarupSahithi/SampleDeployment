@@ -12,8 +12,8 @@ ArgoCd
             7.	echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
   3. To verify the installation, run:
-                   1. sudo snap install kubectl –classic
-                   2. kubectl version –client
+                   1. sudo snap install kubectl --classic
+                   2. kubectl version --client
 
   4.Install Minikube:
             1.	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 sudo install minikube-linux-amd64 /usr/local/bin/minikube
@@ -29,12 +29,12 @@ ArgoCd
                2. kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   7.Check weather the argocd services and pods are created successfully or not
             Commands are:
-            Kubectl get pods -n argocd
-            Kubectl get svc -n argocd
+            kubectl get pods -n argocd
+            kubectl get svc -n argocd
             Once all services and pods are ready
             Change the type in argocd-server service from CLUSTERIP to NODEPORT
             Ex: type: Nodeport
-            Command: kubectl edit svc/argocd-server -n argocd
+              Command: kubectl edit svc/argocd-server -n argocd
 
   8.Now get the argocd UI url by running “minikube service argocd-server -n argocd” the command
 
@@ -44,7 +44,6 @@ ArgoCd
 
   10. Login to the argocd UI using username and password 
             Username is “admin”
-
             Password present in the argocd-initial-admin-secret file which is present in  secrets
            Command to view that password id : kubectl edit secret argocd-initial-admin-secret -n argocd
            Copy the password and decode (default password is encoded one we should decode that) by using the
