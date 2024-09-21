@@ -26,7 +26,7 @@ ArgoCd
             3. minikube status
   6. now install the argoCd  by using the given commands
                1. kubectl create namespace argocd
-               2. kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo- cd/stable/manifests/install.yam
+               2. kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   7.Check weather the argocd services and pods are created successfully or not
             Commands are:
             Kubectl get pods -n argocd
