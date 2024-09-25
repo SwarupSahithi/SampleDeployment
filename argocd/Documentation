@@ -38,8 +38,8 @@ ArgoCd
 
   8.Now get the argocd UI url by running “minikube service argocd-server -n argocd” the command
 
-  9. if The UI  is not open . do the port forward using this command “kubectl port-forward svc/argocd-server -n 
-       argocd 8080:443 --address 0.0.0.0 &”    #443 for https : 80 for http
+  9. if The UI  is not open . do the port forward using this command 
+       “kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0 &”    #443 for https : 80 for http
        Now open the using ipaddress:port which you have forwarded (ex 192.168.0.0.:8080) 
 
   10. Login to the argocd UI using username and password 
